@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app = "africa">
+    <head>
+        <title>You don't know Africa!</title>
+        <link rel = "stylesheet" href = "css/main.css" type = "text/css">
+        <link rel = "stylesheet" href = "jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.css" type = "text/css" media = "screen"/> 
+    </head>
+    
+    <body ng-controller = "mainCtrl">
+        
+        <main class = "container"> 
+            
+            <div id = "welcome"></div>
+            <div class = "splash">
+                <h1>You don't know <span>africa</span></h1>
+                <h2>Can you name all of the African Countries?</h2> 
+            </div>
+            
+            <div id = "map" style = "width: 700px; height: 700px"></div>
+  
+            <div class = "intro {{active}}">
+                <h3>WELCOME</h3>
+                <p>Test your geographical knowledge of the African continent. Choose a country on the map and then submit the name of that country to see if you're correct. There are 54 countries in total!</p>
+                <a class = "btn begin" ng-click="begin()">Begin!</a>
+            </div>  
+        
+            <div id = "q"></div>
+            <div id = "w"></div>
+            <div id = "a">how am I doing?</div>
+            
+            <div id = "restart">Restart</div>
+            
+            
+            
+        </main>
+    
+    <!-------------------------------Scripts------------------------------------>
+        <script src = "http://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <script src = "jquery-jvectormap-2.0.3/jquery-jvectormap-2.0.3.min.js"></script>   
+        <script src = "africaMap.js"></script> 
+        <script src = "index.js"></script> 
+    </body>
+</html>
