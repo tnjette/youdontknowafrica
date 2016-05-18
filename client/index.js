@@ -317,32 +317,36 @@ $(document).ready(function(){
     //*********buildOut of results page ***
     
     $("#results").click(function(){
+        //need a correctResults variable to hold the array of correct results in order to pass it to the map...
+        var correctResults = [];
+        
+        
+        
+        
+        
         $.getJSON("countries.json", function(countryObject){
+            console.log("works");
             countryObject.map(function(Country){
-                console.log(Country);
-            console.log(Country.name + " = " + Country.status); 
+                if (Country.status === "Correct"){
+                    correctResults.push(Country.tag);
+                    console.log(Country.name);
+                    console.log(correctResults);
+                }
+            //console.log(Country.name + " = " + Country.status); 
             });
-        });  
-        
-        
-        $(function(){
+            
+            //insert map function here...
+            
+            $(function(){
             
         //somehow need to use the JSON object from above with the status "correct" or "incorrect" to determine the initial color of the map regions. 
             
         var map = $('#resultMap').vectorMap({
             map: 'africa_mill',
             backgroundColor: '#777',
-            regionsSelectable: true,
-            selectedRegions: ["DZ", "RW", "TZ"], //this can be an array from the getJSON function that my return an array of the correct/incorrect answers.
-            regionStyle: {
-                initial: {
-                    fill: "white"
-                },  
-                selected: {
-                    fill: "green",
-                    cursor : 'pointer'
-                }
-            },
+            regionsSelectable: false,
+            selectedRegions: correctResults, //this can be an array from the getJSON function that my return an array of the correct/incorrect answers.
+            
             onHover: function(event, code){
                 
                 var which = function(){
@@ -531,5 +535,7 @@ $(document).ready(function(){
             }
         });
     });
+            //---
+        });  
     });
 });
