@@ -18,18 +18,68 @@ body {
     background-color: rgba(0,0, 0, .025);
 }
 
+/*-----------welcome page --------------------*/
+ 
+#welcome {
+    
+    height: 300px;
+    position: absolute;
+    width: 700px;
+    top: 0px;
+    z-index: 1;
+    background-color: #777;
+    color: #FFF;
+    border-radius: 12px; 
+}
+#welcome h1 {
+    
+    font-weight: 100; 
+    font-size: 2em; 
+    text-transform: uppercase; 
+    margin-top: 30px;
+}
+#welcome span {
+    display: block; 
+    font-weight: 900; 
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 3.2em; 
+    line-height: 65px;
+    color: #FFF;
+}
+
+#welcome .btn.begin{
+    height: 20px;
+    width: 40px;
+    float: center;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgba(200,25,20,.7);
+    border-radius: 10px;;
+    color: #FFF;
+    position: relative;
+    top: 0px;
+    font-size: 14px; 
+}
+
 /*----------Splash page----------------------*/
 .splash {
-    height: 250px;
+    height: 200px;
 }
 
 .splash h1 {
-    font-weight: 100; font-size: 2ems; text-transform: uppercase; margin: 0px;
+    font-weight: 100; 
+    font-size: 2em; 
+    text-transform: uppercase; 
+    margin-top: 30px;
 }
 
 .splash h1 span {
-    display: block; font-weight: 900; font-family: 'Titillium Web', sans-serif;
-    font-size: 3.2em; line-height: 65px;
+    display: block; 
+    font-weight: 900; 
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 3.2em; 
+    line-height: 65px;
 }
 
 .splash h2 {
