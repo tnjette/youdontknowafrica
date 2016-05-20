@@ -2,7 +2,9 @@ var express = require("express"),
 http = require("http"),
 bodyParser = require("body-parser"),
 app = express(),
-Countries = [];
+Countries = [],
+Results = [];
+
 
 
 app.use(express.static(__dirname + "/client"));
@@ -357,3 +359,5 @@ app.post("/restart", function(req, res){
     
     res.json({"message" : "You have restarted your quiz."});
 });
+
+
