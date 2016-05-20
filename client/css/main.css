@@ -162,3 +162,20 @@ body {
     
 }
 
+.answered {
+    margin-left: 150px;
+    height: 420px;
+    position:absolute;
+    width: 400px;
+    top: 400px;
+    z-index: 1;
+    background-color: #777;
+    color: #FFF;
+    border-radius: 12px;
+}
+
+.answered img {
+    position: relative;
+    width: 90%;
+    top: 20px;
+}
