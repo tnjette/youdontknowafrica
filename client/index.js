@@ -16,7 +16,7 @@ var main = function(countryObject){
                 }
             },
             onRegionClick: function(event, code){
-                var which = function(){
+                var select = function(){
                     var check = true;
                     $.getJSON("countries.json", function(countryObject){
                         countryObject.forEach(function(entry){
@@ -95,178 +95,185 @@ var main = function(countryObject){
                 var co = "";
 
                 if (code === "BF"){  
-                        co  = "../maps/bf.png";
-                        which();
+                    co  = "../maps/bf.png";
+                    select();
                 } else if (code === "DJ"){
-                        co  = "../maps/dj.png";
-                        which();
+                    co  = "../maps/dj.png";
+                    select();
                 } else if (code === "BI"){
                     co  = "../maps/bi.png";
-                    which();
+                    select();
                 } else if (code === "BJ"){
                     co  = "../maps/bj.png";
-                    which();
+                    select();
                 } else if (code === "ZA"){
                     co = "../maps/za.png";
-                    which();
+                    select();
                 } else if (code === "BW"){
                     co  = "../maps/bw.png";
-                    which();
+                    select();
                 } else if (code === "DZ"){
                     co  = "../maps/dz.png";
-                    which();
+                    select();
                 } else if (code === "ET"){
                     co  = "../maps/et.png";
-                    which();
+                    select();
                 } else if (code === "RW"){
                     co  = "../maps/rw.png";
-                    which();
+                    select();
                 } else if (code === "TZ"){
                     co  = "../maps/tz.png";
-                    which();
+                    select();
                 } else if (code === "GQ"){
                     co  = "../maps/gq.png";
-                    which();
+                    select();
                 } else if (code === "NA"){
                     co  = "../maps/na.png";
-                    which();
+                    select();
                 } else if (code === "NE"){
                     co  = "../maps/ne.png";
-                    which();
+                    select();
                 } else if (code === "NG"){
                     co  = "../maps/ng.png";
-                    which();
+                    select();
                 } else if (code === "TN"){
                     co  = "../maps/tn.png";
-                    which();
+                    select();
                 } else if (code === "LR"){
                     co  = "../maps/lr.png";
-                    which();
+                    select();
                 } else if (code === "LS"){
                     co  = "../maps/ls.png";
-                    which();
+                    select();
                 } else if (code === "ZW"){
                     co  = "../maps/zw.png";
-                    which();
+                    select();
                 } else if (code === "TG"){
                     co  = "../maps/tg.png";
-                    which();
+                    select();
                 } else if (code === "TD"){
                     co  = "../maps/td.png";
-                    which();
+                    select();
                 } else if (code === "ER"){
                     co  = "../maps/er.png";
-                    which();
+                    select();
                 } else if (code === "LY"){
                     co  = "../maps/ly.png";
-                    which();
+                    select();
                 } else if (code === "GW"){
                     co  = "../maps/gw.png";
-                    which();
+                    select();
                 } else if (code === "ZM"){
                     co  = "../maps/zm.png";
-                    which();
+                    select();
                 } else if (code === "CI"){
                     co  = "../maps/ci.png";
-                    which();
+                    select();
                 } else if (code === "EH"){
                     co  = "../maps/eh.png";
-                    which();
+                    select();
                     console.log('needs a map for western sahara');
                 } else if (code === "CM"){
                     co  = "../maps/cm.png";
-                    which();
+                    select();
                 } else if (code === "EG"){
                     co  = "../maps/eg.png";
-                    which();
+                    select();
                 } else if (code === "SL"){
                     co  = "../maps/sl.png";
-                    which();
+                    select();
                 } else if (code === "CG"){
                     co  = "../maps/cg.png";
-                    which();
+                    select();
                 } else if (code === "CF"){
                     co  = "../maps/cf.png";
-                    which();
+                    select();
                 } else if (code === "AO"){
                     co  = "../maps/ao.png";
-                    which();
+                    select();
                 } else if (code === "CD"){
                     co  = "../maps/cd.png";
-                    which();
+                    select();
                 } else if (code === "GA"){
                     co  = "../maps/ga.png";
-                    which();
+                    select();
                 } else if (code === "GN"){
                     co  = "../maps/gn.png";
-                    which();
+                    select();
                 } else if (code === "GM"){
                     co  = "../maps/gm.png";
-                    which();
+                    select();
                 } else if (code === "XS"){
                     console.log("need a map of somaliland");
                     co  = "../maps/xs.png";
-                    which();
+                    select();
                 } else if (code === "CV"){
                     co  = "../maps/cv.png";
-                    which();
+                    select();
                 } else if (code === "GH"){
                     co  = "../maps/gh.png";
-                    which();
+                    select();
                 } else if (code === "SZ"){
                     co  = "../maps/sz.png";
-                    which();
+                    select();
                     console.log("need a map of swaziland");
                 } else if (code === "MG"){
                     co  = "../maps/mg.png";
-                    which();
+                    select();
                 } else if (code === "MA"){
                     co  = "../maps/ma.png";
-                    which();
+                    select();
                     console.log("need a map of morocco");
                 } else if (code === "KE"){
                     co  = "../maps/ke.png";
-                    which();
+                    select();
                 } else if (code === "SS"){
                     co  = "../maps/ss.png";
-                    which();
+                    select();
                 } else if (code === "ML"){
                     co  = "../maps/ml.png";
-                    which();
+                    select();
                 }  else if (code === "KM"){
                     co  = "../maps/km.png";
-                    which();
+                    select();
                 } else if (code === "ST"){
                     co  = "../maps/st.png";
-                    which();
+                    select();
                 } else if (code === "MW"){
                     co  = "../maps/mw.png";
-                    which();
+                    select();
                 } else if (code === "SO"){
                     co  = "../maps/so.png";
-                    which();
+                    select();
                 } else if (code === "SN"){
                     co  = "../maps/sn.png";
-                    which();
+                    select();
                 } else if (code === "MR"){
                     co  = "../maps/mr.png";
-                    which();
+                    select();
                 } else if (code === "UG"){
                     co  = "../maps/ug.png";
-                    which();
+                    select();
                 } else if (code === "SD"){
                     co  = "../maps/sd.png";
-                    which();
+                    select();
                 } else if (code === "MZ"){
                     co  = "../maps/mz.png";
-                    which();
+                    select();
                 }   
             }
         });
     });
     
-    $("#results").click(function(){
-        //need a correctResults variable to hold the array of correct results in order to pass it to the map...
+    $("#getResults").click(function(){
+        
+        //add dom elements for the results page to show the tallied results...
+        
+        $(this).hide();
+        $("#map").fadeTo(2000, 0).hide(); //fade the main map object then hide it.
+        $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");
+        $("#resultMap").hide().fadeIn(2000); //then fade in the results map object, this may not work, the fadeIn(2000) may need to be a callback function inside the hide() function.
+        
         var correctResults = {};
             
         $(function(){ 
@@ -300,7 +307,7 @@ var main = function(countryObject){
                     },
                     onRegionClick: function(event, code){
 
-                        var which = function(){
+                        var select = function(){
                                 //DOM object insert here 
                             $("#r").html("<div class = 'answered'><img src = '" + co + "'></img></div")
 
@@ -310,170 +317,170 @@ var main = function(countryObject){
 
                         if (code === "BF"){  
                             co  = "../maps/bf.png";
-                            which();
+                            select();
                         } else if (code === "DJ"){
                             co  = "../maps/dj.png";
-                            which();
+                            select();
                         } else if (code === "BI"){
                             co  = "../maps/bi.png";
-                            which();
+                            select();
                         } else if (code === "BJ"){
                             co  = "../maps/bj.png";
-                            which();
+                            select();
                         } else if (code === "ZA"){
                             co = "../maps/za.png";
-                            which();
+                            select();
                         } else if (code === "BW"){
                             co  = "../maps/bw.png";
-                            which();
+                            select();
                         } else if (code === "DZ"){
                             co  = "../maps/dz.png";
-                            which();
+                            select();
                         } else if (code === "ET"){
                             co  = "../maps/et.png";
-                            which();
+                            select();
                         } else if (code === "RW"){
                             co  = "../maps/rw.png";
-                            which();
+                            select();
                         } else if (code === "TZ"){
                             co  = "../maps/tz.png";
-                            which();
+                            select();
                         } else if (code === "GQ"){
                             co  = "../maps/gq.png";
-                            which();
+                            select();
                         } else if (code === "NA"){
                             co  = "../maps/na.png";
-                            which();
+                            select();
                         } else if (code === "NE"){
                             co  = "../maps/ne.png";
-                            which();
+                            select();
                         } else if (code === "NG"){
                             co  = "../maps/ng.png";
-                            which();
+                            select();
                         } else if (code === "TN"){
                             co  = "../maps/tn.png";
-                            which();
+                            select();
                         } else if (code === "LR"){
                             co  = "../maps/lr.png";
-                            which();
+                            select();
                         } else if (code === "LS"){
                             co  = "../maps/ls.png";
-                            which();
+                            select();
                         } else if (code === "ZW"){
                             co  = "../maps/zw.png";
-                            which();
+                            select();
                         } else if (code === "TG"){
                             co  = "../maps/tg.png";
-                            which();
+                            select();
                         } else if (code === "TD"){
                             co  = "../maps/td.png";
-                            which();
+                            select();
                         } else if (code === "ER"){
                             co  = "../maps/er.png";
-                            which();
+                            select();
                         } else if (code === "LY"){
                             co  = "../maps/ly.png";
-                            which();
+                            select();
                         } else if (code === "GW"){
                             co  = "../maps/gw.png";
-                            which();
+                            select();
                         } else if (code === "ZM"){
                             co  = "../maps/zm.png";
-                            which();
+                            select();
                         } else if (code === "CI"){
                             co  = "../maps/ci.png";
-                            which();
+                            select();
                         } else if (code === "EH"){
                             co  = "../maps/eh.png";
-                            which();
+                            select();
                             console.log('needs a map for western sahara');
                         } else if (code === "CM"){
                             co  = "../maps/cm.png";
-                            which();
+                            select();
                         } else if (code === "EG"){
                             co  = "../maps/eg.png";
-                            which();
+                            select();
                         } else if (code === "SL"){
                             co  = "../maps/sl.png";
-                            which();
+                            select();
                         } else if (code === "CG"){
                             co  = "../maps/cg.png";
-                            which();
+                            select();
                         } else if (code === "CF"){
                             co  = "../maps/cf.png";
-                            which();
+                            select();
                         } else if (code === "AO"){
                             co  = "../maps/ao.png";
-                            which();
+                            select();
                         } else if (code === "CD"){
                             co  = "../maps/cd.png";
-                            which();
+                            select();
                         } else if (code === "GA"){
                             co  = "../maps/ga.png";
-                            which();
+                            select();
                         } else if (code === "GN"){
                             co  = "../maps/gn.png";
-                            which();
+                            select();
                         } else if (code === "GM"){
                             co  = "../maps/gm.png";
-                            which();
+                            select();
                         } else if (code === "XS"){
                             console.log("need a map of somaliland");
                             co  = "../maps/xs.png";
-                            which();
+                            select();
                         } else if (code === "CV"){
                             co  = "../maps/cv.png";
-                            which();
+                            select();
                         } else if (code === "GH"){
                             co  = "../maps/gh.png";
-                            which();
+                            select();
                         } else if (code === "SZ"){
                             co  = "../maps/sz.png";
-                            which();
+                            select();
                             console.log("need a map of swaziland");
                         } else if (code === "MG"){
                             co  = "../maps/mg.png";
-                            which();
+                            select();
                         } else if (code === "MA"){
                             co  = "../maps/ma.png";
-                            which();
+                            select();
                             console.log("need a map of morocco");
                         } else if (code === "KE"){
                             co  = "../maps/ke.png";
-                            which();
+                            select();
                         } else if (code === "SS"){
                             co  = "../maps/ss.png";
-                            which();
+                            select();
                         } else if (code === "ML"){
                             co  = "../maps/ml.png";
-                            which();
+                            select();
                         }  else if (code === "KM"){
                             co  = "../maps/km.png";
-                            which();
+                            select();
                         } else if (code === "ST"){
                             co  = "../maps/st.png";
-                            which();
+                            select();
                         } else if (code === "MW"){
                             co  = "../maps/mw.png";
-                            which();
+                            select();
                         } else if (code === "SO"){
                             co  = "../maps/so.png";
-                            which();
+                            select();
                         } else if (code === "SN"){                            
                             co  = "../maps/sn.png";
-                            which();
+                            select();
                         } else if (code === "MR"){
                             co  = "../maps/mr.png";
-                            which();
+                            select();
                         } else if (code === "UG"){
                             co  = "../maps/ug.png";
-                            which();
+                            select();
                         } else if (code === "SD"){
                             co  = "../maps/sd.png";
-                            which();
+                            select();
                         } else if (code === "MZ"){
                             co  = "../maps/mz.png";
-                            which();
+                            select();
                         }   
                     }
                 });
@@ -486,13 +493,39 @@ $(document).ready(function(){
     $("#map").css("opacity", "0");
     $.getJSON("countries.json", function(countryObject){
         main(countryObject);
-        $("#welcome").html("<h1>Welcome to the You Don't know <span>Africa</span> Geography quiz!<h1><a class = 'btn begin' id = 'begin'>Begin</a>");
-        $(".splash").html("<h1>You don't know <span>africa</span></h1><h2>Can you name all of the African Countries?</h2>");
+        $("#mainHead").html("<h1>You Don't know <span>Africa</span></h1>");
+        $("#welcome").html("<h2>Welcome to the</h2><h2>Geography quiz!</h1><a class = 'btn begin' id = 'begin'>Begin</a><h3>Simply click on a country on the map and enter the name of that country.</h3><h3>There are 54 in total!</h3>");
+        
+        //$(".splash").html("<h1>You don't know <span>africa</span></h1><h2>Can you //name all of the African Countries?</h2>");
+        
         $('#begin').click(function(){
             $("#map").fadeTo(2000, 1);
-            $("#welcome").fadeOut(2000, function(){
-                $(this).empty();
+            $('#resultMap').hide();
+            $("#getResults").html("<a class = btn results>Submit my quiz</a>");
+            
+            //change the size of the welcome div and remove divs 1 and 3 from the welcome div. 
+            $('#welcome').fadeOut(2000).empty();
+            
+            $("#mainHead").animate({
+                fontSize: '1em',
+                left: '100px',
+                top: '50px',
             });
+            
+            $('#mainHead span').animate({
+                    marginTop: '-10px'
+                });
+            
+            //$("#welcome h2").fadeOut(1000).empty()
+            //$("#welcome h3").fadeOut(1000).empty();
+            //$("#welcome a").fadeOut(1000).empty();
+           
+            
+            //$("#welcome").fadeOut(2000, function(){
+              //  $(this).empty();
+            //});   //this is the original DOM structure
+            
+            
         });  
     });
 });

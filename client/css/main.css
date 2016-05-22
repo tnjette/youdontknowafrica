@@ -1,14 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:900|Roboto:400,100);
 
-body {
+/*body {
     height: 100%;
     width: 100%;
 }
-
+*/
 .container {
     position: relative;
     width: 700px;
-    height: auto;
+    height: 100%;
     margin: auto;
     overflow: hidden; 
     font-family: Roboto;
@@ -19,52 +19,96 @@ body {
 }
 
 /*-----------welcome page --------------------*/
- 
+
+#mainHead {
+    display: block;
+    top: 150px;
+    float: center;
+    font-weight: 100; 
+    font-size: 2em; 
+    text-transform: uppercase; 
+    position: absolute;
+    z-index: 2;
+    color: #FFF;
+}
+
+#mainHead h1 {
+    margin-left: 150px;
+    font-weight: 100;
+    font-size: 1.5em;
+    text-transform: uppercase; 
+}
+#mainHead span {
+    display: block; 
+    font-weight: 900; 
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 2.2em; 
+    line-height: 65px;
+    color: #FFF;
+    padding: 0px;
+    text-transform: uppercase;
+}
+
 #welcome {
-    
-    height: 300px;
+    height: 100%;
     position: absolute;
     width: 700px;
-    top: 0px;
+    top: 50px;
     z-index: 1;
     background-color: #777;
     color: #FFF;
     border-radius: 12px; 
 }
-#welcome h1 {
-    
+/*#welcome div{
+    margin-top: 150px;
+}*/
+
+#welcome h2{
     font-weight: 100; 
     font-size: 2em; 
     text-transform: uppercase; 
-    margin-top: 30px;
+    position: absolute;
+    
+}/* so this is redundant*/
+
+#welcome h3 {
+    font-weight: 100;
+    font-size: 1em;
+    margin-top: -15px;
+    
 }
-#welcome span {
+
+/*#welcome span {   //this is redundant too...
     display: block; 
     font-weight: 900; 
     font-family: 'Titillium Web', sans-serif;
     font-size: 3.2em; 
     line-height: 65px;
     color: #FFF;
-}
+    padding: 0px;
+    text-transform: uppercase;
+}*/ 
 
 #welcome .btn.begin{
-    height: 20px;
-    width: 40px;
+    font-weight: 100;
+    font-size: 20px;
+    height: 30px;
+    width: 60px;
     float: center;
     cursor: pointer;
     margin-left: 10px;
     padding: 5px 10px 5px 10px;
-    background-color: rgba(200,25,20,.7);
+    background-color: rgba(25,200,20,.5);
     border-radius: 10px;;
     color: #FFF;
     position: relative;
-    top: 0px;
-    font-size: 14px; 
+    top: 300px; 
 }
 
 /*----------Splash page----------------------*/
 .splash {
-    height: 200px;
+    height: 180px;
+    background-color: #777;
 }
 
 .splash h1 {
@@ -84,8 +128,24 @@ body {
 
 .splash h2 {
     padding: 20px;
+    font-weight: 100;
 }
 /*----------------------------------------------*/
+#map {
+    width: 700px;
+    height: 700px;
+}
+
+#resultNums {
+    
+}
+
+#resultMap {
+    width: 700px;
+    height: 700px;
+    
+}
+
 .question{
     margin-left: 150px;
     height: 420px;
@@ -179,3 +239,16 @@ body {
     width: 90%;
     top: 20px;
 }
+
+#getResults a {
+    float: center;
+    cursor: pointer;
+    position: relative;
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgba(200,25,20,.7);
+    border-radius: 10px;;
+    color: #FFF;
+    font-size: 14px; 
+}
+/* needs more stylization for the added results page DOM elements*/
