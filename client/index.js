@@ -271,7 +271,14 @@ var main = function(countryObject){
         
         $(this).hide();
         $("#map").fadeTo(2000, 0).hide(); //fade the main map object then hide it.
+        
+        
+        
         $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");
+        //this needs to be calculated...and integrated into the DOM.
+        
+        
+        
         $("#resultMap").hide().fadeIn(2000); //then fade in the results map object, this may not work, the fadeIn(2000) may need to be a callback function inside the hide() function.
         
         var correctResults = {};
@@ -279,6 +286,7 @@ var main = function(countryObject){
         $(function(){ 
             $.getJSON("countries.json", function(countryObject){
                 var results = {};
+                var collected = [];
                 countryObject.forEach(function(Country){ //assignes the result for each answered country to the object passed to the resultMap variable//
                     var result = new Object();
                     if (Country.status === "Correct"){
@@ -288,6 +296,7 @@ var main = function(countryObject){
                         result[Country.tag] = "0";
                         Object.assign(results, result);
                     }
+                    
                 });
                 
                 $('#resultMap').vectorMap({
@@ -300,21 +309,49 @@ var main = function(countryObject){
                                 "0" : "rgba(200, 0, 0, .5)", 
                                 "1" : "rgba(0, 200, 0, .5)"
                                    },
-                                 
                             attribute: "fill",
                             values : results 
                         }]
                     },
                     onRegionClick: function(event, code){
-
+                        
                         var select = function(){
-                                //DOM object insert here 
-                            $("#r").html("<div class = 'answered'><img src = '" + co + "'></img></div")
-
+                            
+                            var str = "";
+                            
+                            var check = function(){
+                                var answered = true;
+                                
+                                countryObject.forEach(function(Country){
+                                    console.log(Country);
+                                    
+                                    if (Country.tag === code){
+                                        str = '"' + Country.name + '"' + " is " + Country.status + ".";
+                                        answered = false;
+                                    } 
+                                    
+                                });
+                                
+                                if (answered){
+                                    str = "You didn't name that country.";
+                                }
+                                
+                                $("#resultMap").fadeTo(800, 0.3);
+                            
+                                $("#r").html("<div id = 'answered'><img src = '" + co + "'></img><h3>" + str + "</h3><a class = 'btn return'>Return</div>");
+                                console.log(str);
+                                
+                                //this is really where the outreach should be for navigating to wikipedia pages about that country or others.
+                                $(".btn.return").click(function(){
+                                    $("#r").fadeOut(2000).empty();
+                                    $("#resultMap").fadeTo(800, 1);
+                                });
+                            }
+                            check();  
                         };
 
                         var co = "";
-
+                        
                         if (code === "BF"){  
                             co  = "../maps/bf.png";
                             select();

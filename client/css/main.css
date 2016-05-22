@@ -222,24 +222,6 @@
     
 }
 
-.answered {
-    margin-left: 150px;
-    height: 420px;
-    position:absolute;
-    width: 400px;
-    top: 400px;
-    z-index: 1;
-    background-color: #777;
-    color: #FFF;
-    border-radius: 12px;
-}
-
-.answered img {
-    position: relative;
-    width: 90%;
-    top: 20px;
-}
-
 #getResults a {
     float: center;
     cursor: pointer;
@@ -251,4 +233,36 @@
     color: #FFF;
     font-size: 14px; 
 }
+
+#answered {
+    margin-left: 150px;
+    height: 420px;
+    position: absolute;
+    width: 400px;
+    top: 400px;
+    z-index: 1;
+    background-color: #777;
+    color: #FFF;
+    border-radius: 12px;
+}
+
+#answered img {
+    position: relative;
+    width: 90%;
+    top: 20px;
+}
+
+#answered h3 {
+    margin-top: 40px;
+}
 /* needs more stylization for the added results page DOM elements*/
+
+.btn.return {
+    position: relative;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    background-color: rgba(200,25,20,.7);
+    border-radius: 10px;
+    color: #FFF;
+    font-size: 14px; 
+}
