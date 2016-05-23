@@ -270,16 +270,15 @@ var main = function(countryObject){
         //add dom elements for the results page to show the tallied results...
         
         $(this).hide();
-        $("#map").fadeTo(2000, 0).hide(); //fade the main map object then hide it.
+        $("#map").fadeOut(800);
+        
+        $("#resultMap").fadeIn(800); 
         
         
         
         $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");
         //this needs to be calculated...and integrated into the DOM.
         
-        
-        
-        $("#resultMap").hide().fadeIn(2000); //then fade in the results map object, this may not work, the fadeIn(2000) may need to be a callback function inside the hide() function.
         
         var correctResults = {};
             
@@ -314,7 +313,6 @@ var main = function(countryObject){
                         }]
                     },
                     onRegionClick: function(event, code){
-                        
                         var select = function(){
                             
                             var str = "";
@@ -336,14 +334,17 @@ var main = function(countryObject){
                                     str = "You didn't name that country.";
                                 }
                                 
-                                $("#resultMap").fadeTo(800, 0.3);
-                            
-                                $("#r").html("<div id = 'answered'><img src = '" + co + "'></img><h3>" + str + "</h3><a class = 'btn return'>Return</div>");
-                                console.log(str);
                                 
+                                $("#r").hide();
+                                $("#r").html("<div id = 'answered'><img src = '" + co + "'></img><h3>" + str + "</h3><a class = 'btn return'>Return</div>");
+                                
+                                $("#resultMap").fadeTo(800, 0.3);
+                                $("#r").fadeIn(2000);
                                 //this is really where the outreach should be for navigating to wikipedia pages about that country or others.
                                 $(".btn.return").click(function(){
-                                    $("#r").fadeOut(2000).empty();
+                                    $("#r").fadeOut(2000, function(){
+                                        $(this).empty();
+                                    });
                                     $("#resultMap").fadeTo(800, 1);
                                 });
                             }
@@ -529,16 +530,18 @@ var main = function(countryObject){
 $(document).ready(function(){
     $("#map").css("opacity", "0");
     $.getJSON("countries.json", function(countryObject){
-        main(countryObject);
-        $("#mainHead").html("<h1>You Don't know <span>Africa</span></h1>");
-        $("#welcome").html("<h2>Welcome to the</h2><h2>Geography quiz!</h1><a class = 'btn begin' id = 'begin'>Begin</a><h3>Simply click on a country on the map and enter the name of that country.</h3><h3>There are 54 in total!</h3>");
+        //main(countryObject);
+        $("#mainHead").html("<h1>You Don't know</h1><span>Africa</span>");
+        $("#welcome").html("<h2>Welcome to</h2><a class = 'btn begin' id = 'begin'>Begin</a><p>In an era with incredible technological connectivity, it can be surprising how limited our familiarity becomes of the world we live in. Here is an opportunity to gain a new perspective on your own familiarity with the African continent, or to try to prove our assumptions wrong. Simply click on a country on the map and enter the name of that country. Simple as that.</p><h3>There are 54 in total!</h3>");
         
         //$(".splash").html("<h1>You don't know <span>africa</span></h1><h2>Can you //name all of the African Countries?</h2>");
         
         $('#begin').click(function(){
+            main(countryObject);
+            $("#map").hide();
             $("#map").fadeTo(2000, 1);
             $('#resultMap').hide();
-            $("#getResults").html("<a class = btn results>Submit my quiz</a>");
+            $("#getResults").html("<a class = 'btn results'>Submit my quiz</a>");
             
             //change the size of the welcome div and remove divs 1 and 3 from the welcome div. 
             $('#welcome').fadeOut(2000).empty();
@@ -546,12 +549,11 @@ $(document).ready(function(){
             $("#mainHead").animate({
                 fontSize: '1em',
                 left: '100px',
-                top: '50px',
-            });
+                top: '10px',
+                lineHeight: '20px'
+            }, 'slow');
             
-            $('#mainHead span').animate({
-                    marginTop: '-10px'
-                });
+           
             
             //$("#welcome h2").fadeOut(1000).empty()
             //$("#welcome h3").fadeOut(1000).empty();
