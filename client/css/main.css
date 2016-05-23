@@ -96,35 +96,11 @@
     
 }
 
-/*----------Splash page----------------------*/
-.splash {
-    height: 180px;
-    background-color: #777;
-}
-
-.splash h1 {
-    font-weight: 100; 
-    font-size: 2em; 
-    text-transform: uppercase; 
-    margin-top: 30px;
-}
-
-.splash h1 span {
-    display: block; 
-    font-weight: 900; 
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 3.2em; 
-    line-height: 65px;
-}
-
-.splash h2 {
-    padding: 20px;
-    font-weight: 100;
-}
-
 #map {
     width: 700px;
     height: 700px;
+    position: absolute;
+    top: 180px;
 }
 
 #resultNums {
@@ -230,7 +206,7 @@
     background-color: rgba(200,25,20,.7);
     border-radius: 10px;;
     color: #FFF;
-    margin-top: 40px;
+    margin-top: 920px;
 }
 
 #answered {
