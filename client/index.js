@@ -1,4 +1,5 @@
-var main = function(countryObject){
+//var main = function(countryObject){
+var main = function(){
     
     $(function(){
         var map = $('#map').vectorMap({
@@ -42,8 +43,7 @@ var main = function(countryObject){
                                     
                                     $("#map").fadeTo(800, 1);
 
-                                    $.post("countries", newCountry, function(answered){
-
+                                    $.post("countries", newCountry, function(){
                                         countryObject.push(newCountry);
                                         $("<input>").val("");
                                     });
@@ -75,8 +75,6 @@ var main = function(countryObject){
                                 });
                                 $("#map").fadeTo(600, 1);
                             };
-                            
-                            
                             //----------------------------------------
                             $(".holdOn").keydown(function(event){
                                 if (event.keyCode === 13){
@@ -84,7 +82,6 @@ var main = function(countryObject){
                                 }
                             }); //don't know why this keydown function doesn't work...?
                             //----------------------------------------
-
                             $(".holdOn").click(function(){
                                 goBack();
                             });
@@ -529,22 +526,23 @@ var main = function(countryObject){
 
 $(document).ready(function(){
     $("#map").css("opacity", "0");
-    $.getJSON("countries.json", function(countryObject){
-        $("#mainHead").html("<h1>You Don't know</h1><span>Africa</span>");
-        $("#welcome").html("<h2>Welcome to</h2><a class = 'btn begin' id = 'begin'>Begin</a><p>In an era with incredible technological connectivity, it can be surprising how limited our familiarity becomes of the world we live in. Here is an opportunity to gain a new perspective on your own familiarity with the African continent, or to try to prove our assumptions wrong. Simply click on a country on the map and enter the name of that country. Simple as that.</p><h3>There are 54 in total!</h3>");
-        $('#begin').click(function(){
-            main(countryObject);
-            $("#map").hide();
-            $("#map").fadeTo(2000, 1);
-            $('#resultMap').hide();
-            $("#getResults").html("<a class = 'btn results'>Submit my quiz</a>");
-            $('#welcome').fadeOut(2000).empty();
-            $("#mainHead").animate({
-                fontSize: '1em',
-                left: '100px',
-                top: '10px',
-                lineHeight: '20px'
-            }, 'slow');
-        });  
-    });
+    //$.getJSON("countries.json", function(countryObject){ //you don't really need this getJSON function... it doesn't serve any purpose
+    $("#mainHead").html("<h1>You Don't know</h1><span>Africa</span>");
+    $("#welcome").html("<h2>Welcome to</h2><a class = 'btn begin' id = 'begin'>Begin</a><p>In an era with incredible technological connectivity, it can be surprising how limited our familiarity becomes of the world we live in. Here is an opportunity to gain a new perspective on your own familiarity with the African continent, or to try to prove our assumptions wrong. Simply click on a country on the map and enter the name of that country. Simple as that.</p><h3>There are 54 in total!</h3>");
+    $('#begin').click(function(){
+            //main(countryObject); //same with this, doesnt' serve any purpose.
+        main();
+        $("#map").hide();
+        $("#map").fadeTo(2000, 1);
+        $('#resultMap').hide();
+        $("#getResults").html("<a class = 'btn results'>Submit my quiz</a>");
+        $('#welcome').fadeOut(2000).empty();
+        $("#mainHead").animate({
+            fontSize: '1em',
+            left: '100px',
+            top: '10px',
+            lineHeight: '20px'
+        }, 'slow');
+    });  
+    //}); //again here, no purpose.
 });
