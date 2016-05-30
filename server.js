@@ -16,24 +16,18 @@ app.get("/countries.json", function(req, res) {
     res.json(Countries);
 }); 
 
-//**********************workspace********************below******
-
-
-
-
-
-
 app.post("/countries", function (req, res) {
     var newCountry = req.body 
-    var correctName = ""; //added
-    
+    var correctName = ""; 
+
     var adjust = function(){
         if (newCountry.name.toLowerCase() === correctName){
             newCountry.status = "Correct";
         } else {
             newCountry.status = "Incorrect";
-        }
+        } 
     };
+    
     //new if statement refactored with a modular adjust function
     if (newCountry.tag === "BF") {
         correctName = "burkina faso";
@@ -71,7 +65,6 @@ app.post("/countries", function (req, res) {
         correctName = "lesotho";
     } else if (newCountry.tag === "ZW"){
         correctName = "zimbabwe";
-    
     } else if (newCountry.tag === "TG"){
         correctName = "togo";
     } else if (newCountry.tag === "TD"){
@@ -85,13 +78,9 @@ app.post("/countries", function (req, res) {
     } else if (newCountry.tag === "ZM"){
         correctName = "zambia";
         
-        
-        
     } else if (newCountry.tag === "CI"){
         correctName = "ivory coast" || newCountry.name.toLowerCase() === "cote d'ivoire";
          //this is a little different...
-        
-        
         
     } else if (newCountry.tag === "EH"){
         correctName = "western sahara";
@@ -154,6 +143,8 @@ app.post("/countries", function (req, res) {
     }
     
     adjust();
+    
+    
     //below are all of the check function for each country as they are submitted based on the code that is associated with the country.
     
     
@@ -489,15 +480,7 @@ app.post("/countries", function (req, res) {
     
     Countries.push(newCountry);
     
-    var count = function(){
-        
-        var totalCorrect = 0;
-        var totalIncorrect = 0;
-        
-        
-    };
     
-    count();
 
 });
 
