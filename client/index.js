@@ -3,18 +3,13 @@ var main = function(){
     
     
     //**************added*************for refactoring********************
-    var test = function(){
-        
-        $("#getResults").hide();
+    var completed = function(){ //runs the final map with the results highlighted
+        $("#getResults").hide(); 
         $("#map").fadeOut(800);
-        
         $("#resultMap").fadeIn(800); 
-    
         $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");
         //this needs to be calculated...and integrated into the DOM.
-        
         var correctResults = {};
-            
         $(function(){ 
             $.getJSON("countries.json", function(countryObject){
                 var results = {};
@@ -28,13 +23,10 @@ var main = function(){
                         result[Country.tag] = "0";
                         Object.assign(results, result);
                     }
-                    
                 });
-                
                 $('#resultMap').vectorMap({
                     map: 'africa_mill',
                     backgroundColor: '#777',
-                        //selectedRegions: correctResults,
                     series: {
                         regions: [{
                             scale: { 
@@ -47,22 +39,15 @@ var main = function(){
                     },
                     onRegionClick: function(event, code){
                         var select = function(){
-                            
                             var str = "";
-                            
                             var check = function(){
                                 var answered = true;
-                                
                                 countryObject.forEach(function(Country){
-                                    console.log(Country);
-                                    
                                     if (Country.tag === code){
                                         str = '"' + Country.name + '"' + " is " + Country.status + ".";
                                         answered = false;
                                     } 
-                                    
                                 });
-                                
                                 if (answered){
                                     str = "You didn't name that country.";
                                 }
@@ -256,7 +241,7 @@ var main = function(){
                 });
             });
         });  
-    };    //*********************END OF TEST*******************
+    };    //*********************END OF completed function*******************
     
     $(function(){
         var map = $('#map').vectorMap({
@@ -304,9 +289,9 @@ var main = function(){
                                     $.getJSON("countries.json", function(countryObject){
                                         var correct = 0;
                                         var incorrect = 0;
-                                        if (countryObject.length === 54){
+                                        if (countryObject.length >= 2){ //54
                                             //then do this.
-                                            test(); //this will run the result map
+                                            completed(); //this will run the result map
                                             countryObject.map(function(country){
                                                 if (country.status === "Correct"){
                                                     correct = correct + 1;
@@ -315,12 +300,23 @@ var main = function(){
                                                 }
                                             });
                                         
-                                            if (correct === 54){
+                                            if (correct >= 2){   //54
                                                 console.log("and you've won!");
                                                 //This needs a DOM integration function to insert the "Congratulatory page"
+                                                
+                                                $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h2>You know </h2><span>AFRICA</span><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
+                                                
+                                                $("#finish").fadeIn(1500);
+                                                $("#resultMap").fadeTo(800, 0.3);
+                                                
+                                                
                                             } else {
                                                 console.log("YOU've finished!");
                                                 //Same here but with the noncongrstulatory page.
+                                                $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h3>You've completed your quiz!</h3><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
+                                                
+                                                $("#finish").fadeIn(1500);
+                                                $("#resultmap").fadeTo(800, 0.3);
                                             }
                                         }
                                     });
@@ -542,7 +538,7 @@ var main = function(){
     
     $("#getResults").click(function(){
         
-        test(); //added
+        completed(); //added
      //added
         
         /*
@@ -810,6 +806,7 @@ var main = function(){
 };
 
 $(document).ready(function(){
+    $("#finish").hide();
     $("#map").css("opacity", "0");
     //$.getJSON("countries.json", function(countryObject){ //you don't really need this getJSON function... it doesn't serve any purpose
     $("#mainHead").html("<h1>You Don't know</h1><span>Africa</span>");
@@ -822,6 +819,7 @@ $(document).ready(function(){
         $('#resultMap').hide();
         $("#getResults").html("<a class = 'btn results'>Submit my quiz</a>");
         $('#welcome').fadeOut(2000).empty();
+        
         $("#mainHead").animate({
             fontSize: '1em',
             left: '100px',
