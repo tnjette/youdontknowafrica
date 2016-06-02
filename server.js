@@ -16,6 +16,12 @@ app.get("/countries.json", function(req, res) {
     res.json(Countries);
 }); 
 
+app.post("/begin", function(req, res){
+
+    Countries = [];
+    
+});
+
 app.post("/countries", function (req, res) {
     var newCountry = req.body 
     var correctName = ""; 
