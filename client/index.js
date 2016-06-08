@@ -1,9 +1,17 @@
 //var main = function(countryObject){
 var main = function(){
     
+    //new branch test
     
     //**************added*************for refactoring********************
     var completed = function(){ //runs the final map with the results highlighted
+        
+        //POST method goes here, not in the submit() function.
+        $.post("countries", newCountry, function(){
+            countryObject.push(newCountry);
+        });
+        
+        
         $("#getResults").hide(); 
         $("#map").fadeOut(800);
         $("#resultMap").fadeIn(800); 
@@ -243,7 +251,7 @@ var main = function(){
         });  
     };    //*********************END OF completed function*******************
     
-    $(function(){
+    $(function(){  //main map
         var map = $('#map').vectorMap({
             map: 'africa_mill',
             backgroundColor: '#777',
@@ -277,10 +285,10 @@ var main = function(){
                             var answer = $("#txt").val(),
                                 newCountry = {"tag" : code, "name": answer, "status" : null, "answered" : true};  
                                 $("#map").fadeTo(800, 1);
-                                $.post("countries", newCountry, function(){
-                                    countryObject.push(newCountry);
-                                    $("<input>").val("");
-                                });
+                            
+                            
+                                
+                                $("<input>").val("");
                                 $("#q").fadeOut(2000, function(){
                                     $(this).empty();
                                 });
