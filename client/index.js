@@ -8,9 +8,16 @@ var main = function(){
     var completed = function(){ //runs the final map with the results highlighted
                                     
         //POST all the final answers to the server
+        /*
         $.post("countries", finalAnswers, function(){
             countryObject.push(finalAnswers);
         });
+        */
+        //test POST function
+        var send = Object.assign({}, finalAnswers);
+        $.post("countries", send);
+        //how does this array get sent as an object? convert to abject?
+        
         $("#getResults").hide(); 
         $("#map").fadeOut(800);
         $("#resultMap").fadeIn(800); 
@@ -18,7 +25,11 @@ var main = function(){
         var correctResults = {};
         
         $(function(){  //creates a new map with the final results
+            var correct = 0;
+            var incorrect = 0;
             $.getJSON("countries.json", function(countryObject){
+                
+                /*
                                     countryObject.map(function(country){
                                         if (country.status === "Correct"){
                                             correct = correct + 1;
@@ -45,6 +56,7 @@ var main = function(){
                                         $("#finish").fadeIn(1500);
                                         $("#resultmap").fadeTo(800, 0.3);
                                     }
+                                    */
                 var results = {};
                 var collected = [];
                 countryObject.forEach(function(Country){ //assignes the result for each answered country to the object passed to the resultMap variable//
@@ -308,13 +320,13 @@ var main = function(){
                         
                         var submit = function(){
                             console.log("submit() works");
-                            
+                            alreadyAnswered.push(code);
                             var answer = $("#txt").val(),
                                 newCountry = {"tag" : code, "name": answer, "status" : null};  
                                 $("#map").fadeTo(800, 1);
                             
                                 finalAnswers.push(newCountry);
-                                
+                                console.log(finalAnswers);
                                 $("<input>").val("");
                                 $("#q").fadeOut(2000, function(){
                                     $(this).empty();
@@ -322,11 +334,11 @@ var main = function(){
                                 console.log(newCountry);
                             
                                 
-                                var correct = 0;
-                                var incorrect = 0;
+                                //var correct = 0;
+                                //var incorrect = 0;
                             
                             
-                                if (finalAnswers.length >= 7){ //54
+                                if (finalAnswers.length >= 54){ //54
                                     //then do this.
                                     completed(); //this will run the result map
                                     
@@ -345,13 +357,16 @@ var main = function(){
                         });
                                 
                     }; 
-                        
-                    alreadyAnswered.forEach(function(entry){
-                        if (entry.tag === code){
+                    console.log(alreadyAnswered);
+                    /*alreadyAnswered.forEach(function(entry){
+                        if (entry === code){
                             check = false;
                         }
                     });
-                        
+                        */
+                    if (alreadyAnswered.indexOf(code) > -1){
+                        check = false;
+                    }
                         
                     if (check){ 
                             

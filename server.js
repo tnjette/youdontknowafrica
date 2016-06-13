@@ -2,7 +2,7 @@ var express = require("express"),
 http = require("http"),
 bodyParser = require("body-parser"),
 app = express(),
-Countries = [],
+Countries = [];
 Results = [];
 
 app.use(express.static(__dirname + "/client"));
@@ -24,10 +24,10 @@ app.post("/begin", function(req, res){
 
 app.post("/countries", function (req, res) {
     var answerArray = req.body;
-    console.log(answerArray);
-    answerArray.forEach(function(answer){
-        //console.log(answer);
-    
+    var answerValues = Object.keys(answerArray).map(function(key){
+      return answerArray[key];
+    });
+    answerValues.forEach(function(newCountry){
     
         var correctName = ""; 
 
@@ -156,9 +156,9 @@ app.post("/countries", function (req, res) {
         adjust();
 
         Countries.push(newCountry);
-    
+        console.log(newCountry);
     });
-    
+     
 });
 
 app.post("/restart", function(req, res){
