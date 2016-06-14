@@ -1,7 +1,6 @@
 //var main = function(countryObject){
 var main = function(){
-    console.log("main workss");
-    
+    var quit = true;
     var finalAnswers = [];
     var alreadyAnswered = [];
     //**************added*************for refactoring********************
@@ -28,8 +27,10 @@ var main = function(){
             var correct = 0;
             var incorrect = 0;
             $.getJSON("countries.json", function(countryObject){
+                console.log(quit);
+                if (quit){
+                     
                 
-                /*
                                     countryObject.map(function(country){
                                         if (country.status === "Correct"){
                                             correct = correct + 1;
@@ -38,14 +39,14 @@ var main = function(){
                                         }
                                     });
                                         
-                                    if (correct >= 7){   //54
-                                        console.log("and you've won!");
-                                        //This needs a DOM integration function to insert the "Congratulatory page"
-                                        
+                                    if (correct >= 2){   //54
+                                       
                                         $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h2>You know </h2><span>AFRICA</span><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
                                                 
                                         $("#finish").fadeIn(1500);
                                         $("#resultMap").fadeTo(800, 0.3);
+                                        
+                                        
                                                 
                                                 
                                     } else {
@@ -56,10 +57,18 @@ var main = function(){
                                         $("#finish").fadeIn(1500);
                                         $("#resultmap").fadeTo(800, 0.3);
                                     }
-                                    */
+                
+                                    $("#results").click(function(){
+                                            $("#finish").fadeOut(800, function(){
+                                                $(this).empty();
+                                            });
+                                            $("#resultmap").fadeTo(800, 1);
+                                        });
+                }
+                                    
                 var results = {};
                 var collected = [];
-                countryObject.forEach(function(Country){ //assignes the result for each answered country to the object passed to the resultMap variable//
+                countryObject.forEach(function(Country){ 
                     var result = new Object();
                     if (Country.status === "Correct"){
                         result[Country.tag] = "1";
@@ -306,39 +315,33 @@ var main = function(){
                 }
             },
             onRegionClick: function(event, code){
-                console.log("onRegionClick works");
                 
                 var select = function(){
-                    console.log("select() works");
+                    
                     var check = true;
                     var submitForm = function(){  
-                        console.log("submitform() works");
                         
                         $("#map").fadeTo(800, 0.3);
-                        $("#q").html("<div class = 'question'><img src = '" + co + "'></img><input type='text' id = 'txt' value = ''></input><a class = 'btn submit' id = 'submit'>submit your answer</a></div>");  
-                        $("#q").fadeIn(2000);
+                        $("#q").html("<div class = 'question'><img src = '" + co + "'></img><input type='text' id = 'txt' value = ''></input><a class = 'btn submit' id = 'submit'>Submit my answer</a></div>");  
+                        
+                        $("#q").fadeIn(2000, function(){
+                            $("input").focus();
+                        });
                         
                         var submit = function(){
-                            console.log("submit() works");
+                            
                             alreadyAnswered.push(code);
                             var answer = $("#txt").val(),
                                 newCountry = {"tag" : code, "name": answer, "status" : null};  
                                 $("#map").fadeTo(800, 1);
                             
                                 finalAnswers.push(newCountry);
-                                console.log(finalAnswers);
                                 $("<input>").val("");
                                 $("#q").fadeOut(2000, function(){
-                                    $(this).empty();
+                                    $("#q").empty();
                                 });
-                                console.log(newCountry);
                             
-                                
-                                //var correct = 0;
-                                //var incorrect = 0;
-                            
-                            
-                                if (finalAnswers.length >= 54){ //54
+                                if (finalAnswers.length >= 2){ //54
                                     //then do this.
                                     completed(); //this will run the result map
                                     
@@ -573,6 +576,7 @@ var main = function(){
     
     
         $("#getResults").click(function(){
+            quit = false;
             completed(); 
         });
         
