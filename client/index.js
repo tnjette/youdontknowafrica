@@ -1,71 +1,44 @@
-//var main = function(countryObject){
 var main = function(){
     var quit = true;
     var finalAnswers = [];
     var alreadyAnswered = [];
-    //**************added*************for refactoring********************
-    var completed = function(){ //runs the final map with the results highlighted
-                                    
-        //POST all the final answers to the server
-        /*
-        $.post("countries", finalAnswers, function(){
-            countryObject.push(finalAnswers);
-        });
-        */
-        //test POST function
+    var completed = function(){ 
         var send = Object.assign({}, finalAnswers);
         $.post("countries", send);
-        //how does this array get sent as an object? convert to abject?
-        
         $("#getResults").hide(); 
         $("#map").fadeOut(800);
         $("#resultMap").fadeIn(800); 
-        $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");//this STILLneeds to be calculated...and integrated into the DOM.
+        $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");//this STILL needs to be calculated...and integrated into the DOM.
         var correctResults = {};
-        
-        $(function(){  //creates a new map with the final results
+        $(function(){  
             var correct = 0;
             var incorrect = 0;
             $.getJSON("countries.json", function(countryObject){
                 console.log(quit);
                 if (quit){
-                     
-                
-                                    countryObject.map(function(country){
-                                        if (country.status === "Correct"){
-                                            correct = correct + 1;
-                                        } else if (country.status === "Incorrect"){
-                                            incorrect = incorrect + 1;
-                                        }
-                                    });
-                                        
-                                    if (correct >= 2){   //54
-                                       
-                                        $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h2>You know </h2><span>AFRICA</span><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
-                                                
-                                        $("#finish").fadeIn(1500);
-                                        $("#resultMap").fadeTo(800, 0.3);
-                                        
-                                        
-                                                
-                                                
-                                    } else {
-                                        console.log("YOU've finished!");
-                                        //Same here but with the noncongrstulatory page.
-                                        $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h3>You've completed your quiz!</h3><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
-                                                
-                                        $("#finish").fadeIn(1500);
-                                        $("#resultmap").fadeTo(800, 0.3);
-                                    }
-                
-                                    $("#results").click(function(){
-                                            $("#finish").fadeOut(800, function(){
-                                                $(this).empty();
-                                            });
-                                            $("#resultmap").fadeTo(800, 1);
-                                        });
-                }
-                                    
+                    countryObject.map(function(country){
+                        if (country.status === "Correct"){
+                            correct = correct + 1;
+                        } else if (country.status === "Incorrect"){
+                            incorrect = incorrect + 1;
+                        }
+                    });                
+                    if (correct >= 54){   
+                        $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h2>You know </h2><span>AFRICA</span><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
+                        $("#finish").fadeIn(1500);
+                        $("#resultMap").fadeTo(800, 0.3);
+                    } else {
+                        $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h3>You've completed your quiz!</h3><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
+                        $("#finish").fadeIn(1500);
+                        $("#resultmap").fadeTo(800, 0.3);
+                    }
+                    $("#results").click(function(){
+                        $("#finish").fadeOut(800, function(){
+                            $(this).empty();
+                        });
+                        $("#resultmap").fadeTo(800, 1);
+                    });
+                }           
                 var results = {};
                 var collected = [];
                 countryObject.forEach(function(Country){ 
@@ -105,7 +78,6 @@ var main = function(){
                                 if (answered){
                                     str = "You didn't name that country.";
                                 }
-                                
                                 $("#r").hide();
                                 $("#r").html("<div id = 'answered'><img src = '" + co + "'></img><h3>" + str + "</h3><a class = 'btn return'>Return</div>");
                                 
@@ -121,9 +93,7 @@ var main = function(){
                             }
                             check();  
                         };
-
                         var co = "";
-                        
                         if (code === "BF"){  
                             co  = "../maps/bf.png";
                             select();
@@ -297,8 +267,6 @@ var main = function(){
         });  
     };    //*********************END OF completed function*******************
     
-    
-    
     $(function(){  //main map function
         var map = $('#map').vectorMap({
             map: 'africa_mill',
@@ -315,94 +283,63 @@ var main = function(){
                 }
             },
             onRegionClick: function(event, code){
-                
                 var select = function(){
-                    
                     var check = true;
                     var submitForm = function(){  
-                        
                         $("#map").fadeTo(800, 0.3);
-                        $("#q").html("<div class = 'question'><img src = '" + co + "'></img><input type='text' id = 'txt' value = ''></input><a class = 'btn submit' id = 'submit'>Submit my answer</a></div>");  
-                        
+                        $("#q").html("<div class = 'question'><img src = '" + co + "'></img><input type='text' id = 'txt' value = ''></input><a class = 'btn submit' id = 'submit'>Submit my answer</a></div>"); 
                         $("#q").fadeIn(2000, function(){
                             $("input").focus();
                         });
-                        
                         var submit = function(){
-                            
                             alreadyAnswered.push(code);
                             var answer = $("#txt").val(),
                                 newCountry = {"tag" : code, "name": answer, "status" : null};  
                                 $("#map").fadeTo(800, 1);
-                            
                                 finalAnswers.push(newCountry);
                                 $("<input>").val("");
                                 $("#q").fadeOut(2000, function(){
                                     $("#q").empty();
                                 });
-                            
-                                if (finalAnswers.length >= 2){ //54
-                                    //then do this.
-                                    completed(); //this will run the result map
-                                    
+                                if (finalAnswers.length >= 54){ 
+                                    completed(); //run the result map
                                 }
-                               
-                        }; 
-                                
+                        };  
                         $('#txt').keydown(function(event){
                             if (event.keyCode === 13){
                                  submit();
                             }
                         });
-
                         $("#submit").click(function(){
                             submit();
-                        });
-                                
+                        });   
                     }; 
-                    console.log(alreadyAnswered);
-                    /*alreadyAnswered.forEach(function(entry){
-                        if (entry === code){
-                            check = false;
-                        }
-                    });
-                        */
                     if (alreadyAnswered.indexOf(code) > -1){
                         check = false;
                     }
-                        
-                    if (check){ 
-                            
+                    if (check){   
                         submitForm();
-
                     } else { 
-                            
                         $("#map").fadeTo(600, 0.3);
                         $("#w").html("<div class = 'holdOn'><span>You already named that country</span><img src = '" + co + "'></img><a class = 'btn goBack' id = 'goBack'>Go back</a></div>");  
                         $("#w").fadeIn(1500);
-                            
                          var goBack = function(){
                             $("#w").fadeOut(1500, function(){
                                 $(this).empty();
                             });
                             $("#map").fadeTo(600, 1);
                         };
-                            //----------------------------------------
                         $(".holdOn").keydown(function(event){
                             if (event.keyCode === 13){
                                 goBack();
                             }
-                        }); //don't know why this keydown function doesn't work...?
-                            //----------------------------------------
+                        }); //doesn't work?
                         $(".holdOn").click(function(){
                             goBack();
                         });
                     }
-                    
-                }; //end select();
-                
+                }; 
                 var co = "";
-
                 if (code === "BF"){  
                     co  = "../maps/bf.png";
                     select();
@@ -570,29 +507,17 @@ var main = function(){
                     co  = "../maps/mz.png";
                     select();
                 }   
-        } //end onregionclick.
-    }); //end of the main map variable.
-    
-    
-    
+        } 
+    }); 
         $("#getResults").click(function(){
             quit = false;
             completed(); 
         });
-        
-    }); //end of the main MAP function.
-}; //end of the MAIN Function.
-
-
-
-
-
+    }); 
+}; 
 
 $(document).ready(function(){
-  
-    $.post("begin"); //really not necessary since the server is not receiving subsequent posts (ie: updates) to the CountryObject anyway. 
-    
-    
+    $.post("begin"); //make sure the Country obj is empty
     $("#finish").hide();
     $("#map").css("opacity", "0");
     $("#mainHead").html("<h1>You Don't know</h1><span>Africa</span>");
@@ -604,7 +529,6 @@ $(document).ready(function(){
         $('#resultMap').hide();
         $("#getResults").html("<a class = 'btn results'>Submit my quiz</a>");
         $('#welcome').fadeOut(2000).empty();
-        
         $("#mainHead").animate({
             fontSize: '1em',
             left: '100px',
