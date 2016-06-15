@@ -118,7 +118,7 @@ app.post("/countries", function (req, res) {
         } else if (newCountry.tag === "XS"){
             correctName = "somaliland";
         } else if (newCountry.tag === "CV"){
-            correctName = "cape verdi";
+            correctName = "cape verde";
         } else if (newCountry.tag === "GH"){
             correctName = "ghana";
         } else if (newCountry.tag === "SZ"){

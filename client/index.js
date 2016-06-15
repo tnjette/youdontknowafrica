@@ -428,7 +428,6 @@ var main = function(){
                 } else if (code === "EH"){
                     co  = "../maps/eh.png";
                     select();
-                    console.log('needs a map for western sahara');
                 } else if (code === "CM"){
                     co  = "../maps/cm.png";
                     select();
@@ -472,14 +471,14 @@ var main = function(){
                 } else if (code === "SZ"){
                     co  = "../maps/sz.png";
                     select();
-                    console.log("need a map of swaziland");
                 } else if (code === "MG"){
                     co  = "../maps/mg.png";
                     select();
                 } else if (code === "MA"){
-                    co  = "../maps/ma.png";
+                    //co  = "../maps/ma.png";
+                    co="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BlankMap-Morocco2.92.png/512px-BlankMap-Morocco2.92.png";
                     select();
-                    console.log("need a map of morocco");
+                    //console.log("need a map of morocco");
                 } else if (code === "KE"){
                     co  = "../maps/ke.png";
                     select();
