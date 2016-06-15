@@ -8,7 +8,6 @@ var main = function(){
         $("#getResults").hide(); 
         $("#map").fadeOut(800);
         $("#resultMap").fadeIn(800); 
-        $("#resultNums").html("<ul><li>Totals:</li><li>---- Correct</li><li>---Incorrect</li>");//this STILL needs to be calculated...and integrated into the DOM.
         var correctResults = {};
         $(function(){  
             var correct = 0;
@@ -65,7 +64,9 @@ var main = function(){
                                 
                                 $("#resultMap").fadeTo(800, 0.3);
                                 $("#r").fadeIn(2000);
+                                
                                 //this is really where the outreach should be for navigating to wikipedia pages about that country or others.
+                                
                                 $(".btn.return").click(function(){
                                     $("#r").fadeOut(2000, function(){
                                         $(this).empty();
@@ -245,7 +246,6 @@ var main = function(){
                         }   
                     }
                 });
-                
                 if (finished){               
                     if (correct >= 54){   
                         $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h2>You know </h2><span>AFRICA</span><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
@@ -256,7 +256,6 @@ var main = function(){
                         $("#finish").fadeIn(1500);
                         $("#resultmap").fadeTo(800, 0.3);
                     }
-                    
                     $("#results").click(function(){
                         $("#finish").fadeOut(800, function(){
                             $(this).empty();
@@ -264,25 +263,19 @@ var main = function(){
                         $("#resultmap").fadeTo(800, 1);
                     });
                 }    
-                
-                //bring in the calculated results into the DOM
                 var calc = function(){
                     var percentage = ((correct/54)*100).toFixed(1);
                     var unanswered = 54 - (correct + incorrect);
-                    
-                            console.log(percentage + " %, " + correct + " correct, " + incorrect + " incorrect, " + unanswered + " unanswered." );
-
                     $("#resultNums").html("<div>You answered " + percentage + " percent  correctly</div><div class = 'result'><strong>" + correct + "</strong><span  id = 'correct'>correct</span></div><div class = 'result'><strong>" + incorrect + "</strong><span id = 'incorrect'> incorrect</span></div><div class = 'result'><strong>" + unanswered + "</strong><span id = 'unanswered'>unanswered</span></div><div><a class = 'btn replay'>Reload quiz</a><div></div>");
                     $("#resultNums").fadeIn(800);
-                    
                     $(".btn.replay").click(function(){
-                        location.reload(); //resets the entire quiz.
+                        location.reload(); 
                     });
                 };
                 calc();
             });
         });  
-    };    //*********************END OF completed function*******************
+    };    //end of completed().
     
     $(function(){  //main map function
         var map = $('#map').vectorMap({
@@ -524,22 +517,22 @@ var main = function(){
                     co  = "../maps/mz.png";
                     select();
                 }   
-        } 
-    }); 
+            } 
+        }); 
         $("#getResults").click(function(){
             finished = false;
             completed(); 
         });
     }); 
-}; 
+}; //end of main.
 
 $(document).ready(function(){
-    $.post("begin"); //make sure the Country obj is empty
+    $.post("begin");
     $("#resultNums").hide();
     $("#finish").hide();
     $("#map").css("opacity", "0");
     $("#mainHead").html("<h1>You Don't know</h1><span>Africa</span>");
-    $("#welcome").html("<h2>Welcome to</h2><a class = 'btn begin' id = 'begin'>Begin</a><p>In an era with incredible technological connectivity, it can be surprising how limited our familiarity becomes of the world we live in. Here is an opportunity to gain a new perspective on your own familiarity with the African continent, or to try to prove our assumptions wrong. Simply click on a country on the map and enter the name of that country. Simple as that.</p><h3>There are 54 in total!</h3>");
+    $("#welcome").html("<h2>Welcome to</h2><a class = 'btn begin' id = 'begin'>Begin</a><p>In spite of the current availability of information, most people have a surprisingly limited familiarity with world geography. Starting with Africa, try to prove our assumptions wrong. Simply click on a country on the map and enter the name of that country.</p><h3>There are 54 in total!</h3>");
     $('#begin').click(function(){
         main(); 
         $("#map").hide();
