@@ -32,7 +32,7 @@ app.post("/countries", function (req, res) {
         var correctName = ""; 
 
         var adjust = function(){
-            if (newCountry.name.toLowerCase() === correctName){
+            if (newCountry.name.toLowerCase() === correctName || newCountry.name.toLowerCase() === otherName){
                 newCountry.status = "Correct";
             } else {
                 newCountry.status = "Incorrect";
@@ -88,11 +88,9 @@ app.post("/countries", function (req, res) {
             correctName = "guinea-bissau";
         } else if (newCountry.tag === "ZM"){
             correctName = "zambia";
-
         } else if (newCountry.tag === "CI"){
-            correctName = "ivory coast" || newCountry.name.toLowerCase() === "cote d'ivoire";
-             //this is a little different...
-
+            correctName = "ivory coast";
+            var otherName = "cote d'ivoire";
         } else if (newCountry.tag === "EH"){
             correctName = "western sahara";
         } else if (newCountry.tag === "CM"){
