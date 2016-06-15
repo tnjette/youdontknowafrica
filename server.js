@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));    //I don't think this is nec
 app.use(bodyParser.json());
 
 http.createServer(app).listen(3000);
-console.log("to Africa and beyond!");
+console.log("You don't know Africa, on port 3000");
 
 app.get("/countries.json", function(req, res) {
     res.json(Countries);
