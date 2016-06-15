@@ -103,17 +103,50 @@
 }
 
 #resultNums {
-    /*font-family: 'Titillium Web', 'sans-serif';*/
     font-weight: 100;
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 18px;
+    line-height: 45px;
     width: 700px;
-    height: 300px;
+    height: 140px;
     position: relative;
-    margin-top: 910px;
+    margin-top: 900px;
     color: #FFF;
 }
+#resultNums .result{
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+    
+}
+#resultNums span {
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+#resultNums strong{
+    color: #FFF;
+    font-size: 22px;
+    
+}
+#resultNums #correct {
+    color: rgba(25,200,20,.5);
+}
 
+#resultNums #incorrect {
+    color: rgba(200,25,20,.7);
+}
+
+#resultNums .btn.replay{
+    position: relative;
+    bottom: -5px;
+    font-weight: 100;
+    font-size: 18px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    background-color: rgba(25,200,20,.5);
+    border-radius: 10px;;
+    color: #FFF; 
+}
 
 #resultMap {
     width: 700px;

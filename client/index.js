@@ -272,8 +272,13 @@ var main = function(){
                     
                             console.log(percentage + " %, " + correct + " correct, " + incorrect + " incorrect, " + unanswered + " unanswered." );
 
-                    $("#resultNums").html("<div>You answered " + percentage + " percent  correctly</div><div>" + correct + " correct</div><div>" + incorrect + "  incorrect</div><div>" + unanswered + " unanswered</div>");//this STILL needs to be calculated...and integrated into the DOM.
+                    $("#resultNums").html("<div>You answered " + percentage + " percent  correctly</div><div class = 'result'><strong>" + correct + "</strong><span  id = 'correct'>correct</span></div><div class = 'result'><strong>" + incorrect + "</strong><span id = 'incorrect'> incorrect</span></div><div class = 'result'><strong>" + unanswered + "</strong><span id = 'unanswered'>unanswered</span></div><div><a class = 'btn replay'>Reload quiz</a><div></div>");
                     $("#resultNums").fadeIn(800);
+                    
+                    $(".btn.replay").click(function(){
+                        console.log("reset");
+                        main(); //resets the entire quiz.
+                    });
                 };
                 calc();
             });
@@ -551,3 +556,4 @@ $(document).ready(function(){
         }, 'slow');
     });  
 });
+
