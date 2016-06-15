@@ -3,7 +3,7 @@
 .container {
     position: relative;
     width: 700px;
-    height: 1000px;
+    height: 1060px;
     margin: auto;
     overflow: hidden; 
     font-family: Roboto;
@@ -103,8 +103,17 @@
 }
 
 #resultNums {
-    /*need this stylization*/
+    /*font-family: 'Titillium Web', 'sans-serif';*/
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 30px;
+    width: 700px;
+    height: 300px;
+    position: relative;
+    margin-top: 910px;
+    color: #FFF;
 }
+
 
 #resultMap {
     width: 700px;
