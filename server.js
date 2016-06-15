@@ -6,7 +6,7 @@ Countries = [];
 Results = [];
 
 app.use(express.static(__dirname + "/client"));
-app.use(bodyParser.urlencoded({extended: true}));    //I don't think this is necessary since the content does not have to be parsed in the first place.
+app.use(bodyParser.urlencoded({extended: true})); 
 app.use(bodyParser.json());
 
 http.createServer(app).listen(3000);
@@ -17,9 +17,7 @@ app.get("/countries.json", function(req, res) {
 }); 
 
 app.post("/begin", function(req, res){
-
     Countries = [];
-    
 });
 
 app.post("/countries", function (req, res) {
@@ -30,7 +28,6 @@ app.post("/countries", function (req, res) {
     answerValues.forEach(function(newCountry){
     
         var correctName = ""; 
-
         var adjust = function(){
             if (newCountry.name.toLowerCase() === correctName || newCountry.name.toLowerCase() === otherName){
                 newCountry.status = "Correct";
@@ -39,7 +36,6 @@ app.post("/countries", function (req, res) {
             } 
         };
 
-        //new if statement refactored with a modular adjust function
         if (newCountry.tag === "BF") {
             correctName = "burkina faso";
         } else if (newCountry.tag === "DJ"){
@@ -154,14 +150,6 @@ app.post("/countries", function (req, res) {
         adjust();
 
         Countries.push(newCountry);
-        console.log(newCountry);
     });
      
 });
-
-app.post("/restart", function(req, res){
-    
-    res.json({"message" : "You have restarted your quiz."});
-});
-
-
