@@ -276,8 +276,7 @@ var main = function(){
                     $("#resultNums").fadeIn(800);
                     
                     $(".btn.replay").click(function(){
-                        console.log("reset");
-                        main(); //resets the entire quiz.
+                        location.reload(); //resets the entire quiz.
                     });
                 };
                 calc();
@@ -556,4 +555,3 @@ $(document).ready(function(){
         }, 'slow');
     });  
 });
-
