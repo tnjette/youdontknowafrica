@@ -6,8 +6,8 @@ var main = function(){
         var send = Object.assign({}, finalAnswers);
         $.post("countries", send);
         $("#getResults").hide(); 
-        $("#map").fadeOut(800);
-        $("#resultMap").fadeIn(800); 
+        $("#map").fadeOut(600);
+        $("#resultMap").fadeIn(600); 
         var correctResults = {};
         $(function(){  
             var correct = 0;
@@ -62,16 +62,16 @@ var main = function(){
                                 $("#r").hide();
                                 $("#r").html("<div id = 'answered'><img src = '" + co + "'></img><h3>" + str + "</h3><a class = 'btn return'>Return</div>");
                                 
-                                $("#resultMap").fadeTo(800, 0.3);
-                                $("#r").fadeIn(2000);
+                                $("#resultMap").fadeTo(600, 0.3);
+                                $("#r").fadeIn(1200);
                                 
                                 //this is really where the outreach should be for navigating to wikipedia pages about that country or others.
                                 
                                 $(".btn.return").click(function(){
-                                    $("#r").fadeOut(2000, function(){
+                                    $("#r").fadeOut(1200, function(){
                                         $(this).empty();
                                     });
-                                    $("#resultMap").fadeTo(800, 1);
+                                    $("#resultMap").fadeTo(600, 1);
                                 });
                             }
                             check();  
@@ -249,25 +249,25 @@ var main = function(){
                 if (finished){               
                     if (correct >= 54){   
                         $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h2>You know </h2><span>AFRICA</span><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
-                        $("#finish").fadeIn(1500);
-                        $("#resultmap").fadeTo(800, 0.3);
+                        $("#finish").fadeIn(1200);
+                        $("#resultmap").fadeTo(600, 0.3);
                     } else {
                         $("#finish").html("<div class = 'congrats'><h1>Congratulations!</h1><h3>You've completed your quiz!</h3><a class = 'btn finalResults' id = 'results'>See your results</a></div>");  
-                        $("#finish").fadeIn(1500);
-                        $("#resultmap").fadeTo(800, 0.3);
+                        $("#finish").fadeIn(1200);
+                        $("#resultmap").fadeTo(600, 0.3);
                     }
                     $("#results").click(function(){
-                        $("#finish").fadeOut(800, function(){
+                        $("#finish").fadeOut(600, function(){
                             $(this).empty();
                         });
-                        $("#resultmap").fadeTo(800, 1);
-                    });
+                        $("#resultmap").fadeTo(600, 1);
+                    })
                 }    
                 var calc = function(){
                     var percentage = ((correct/54)*100).toFixed(1);
                     var unanswered = 54 - (correct + incorrect);
                     $("#resultNums").html("<div>You answered " + percentage + " percent  correctly</div><div class = 'result'><strong>" + correct + "</strong><span  id = 'correct'>correct</span></div><div class = 'result'><strong>" + incorrect + "</strong><span id = 'incorrect'> incorrect</span></div><div class = 'result'><strong>" + unanswered + "</strong><span id = 'unanswered'>unanswered</span></div><div><a class = 'btn replay'>Reload quiz</a><div></div>");
-                    $("#resultNums").fadeIn(800);
+                    $("#resultNums").fadeIn(600);
                     $(".btn.replay").click(function(){
                         location.reload(); 
                     });
@@ -296,19 +296,19 @@ var main = function(){
                 var select = function(){
                     var check = true;
                     var submitForm = function(){  
-                        $("#map").fadeTo(800, 0.3);
+                        $("#map").fadeTo(600, 0.3);
                         $("#q").html("<div class = 'question'><img src = '" + co + "'></img><input type='text' id = 'txt' value = ''></input><a class = 'btn submit' id = 'submit'>Submit my answer</a></div>"); 
-                        $("#q").fadeIn(800, function(){
+                        $("#q").fadeIn(600, function(){
                             $("input").focus();
                         });
                         var submit = function(){
                             alreadyAnswered.push(code);
                             var answer = $("#txt").val(),
                                 newCountry = {"tag" : code, "name": answer, "status" : null};  
-                                $("#map").fadeTo(800, 1);
+                                $("#map").fadeTo(600, 1);
                                 finalAnswers.push(newCountry);
                                 $("<input>").val("");
-                                $("#q").fadeOut(800, function(){
+                                $("#q").fadeOut(600, function(){
                                     $("#q").empty();
                                 });
                                 if (finalAnswers.length >= 54){ 
@@ -330,14 +330,14 @@ var main = function(){
                     if (check){   
                         submitForm();
                     } else { 
-                        $("#map").fadeTo(800, 0.3);
+                        $("#map").fadeTo(600, 0.3);
                         $("#w").html("<div class = 'holdOn'><span>You already named that country</span><img src = '" + co + "'></img><a class = 'btn goBack' id = 'goBack'>Go back</a></div>");  
-                        $("#w").fadeIn(800);
+                        $("#w").fadeIn(600);
                          var goBack = function(){
-                            $("#w").fadeOut(800, function(){
+                            $("#w").fadeOut(600, function(){
                                 $(this).empty();
                             });
-                            $("#map").fadeTo(800, 1);
+                            $("#map").fadeTo(600, 1);
                         };
                         $(".holdOn").keydown(function(event){
                             if (event.keyCode === 13){
@@ -459,7 +459,6 @@ var main = function(){
                     co  = "../maps/gm.png";
                     select();
                 } else if (code === "XS"){
-                    console.log("need a map of somaliland");
                     co  = "../maps/xs.png";
                     select();
                 } else if (code === "CV"){
@@ -474,11 +473,8 @@ var main = function(){
                 } else if (code === "MG"){
                     co  = "../maps/mg.png";
                     select();
-                } else if (code === "MA"){
-                    //co  = "../maps/ma.png";
-                    co="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BlankMap-Morocco2.92.png/512px-BlankMap-Morocco2.92.png";
+                } else if (code === "MA"){      co="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BlankMap-Morocco2.92.png/512px-BlankMap-Morocco2.92.png";
                     select();
-                    //console.log("need a map of morocco");
                 } else if (code === "KE"){
                     co  = "../maps/ke.png";
                     select();
@@ -535,10 +531,10 @@ $(document).ready(function(){
     $('#begin').click(function(){
         main(); 
         $("#map").hide();
-        $("#map").fadeTo(2000, 1);
+        $("#map").fadeTo(1200, 1);
         $('#resultMap').hide();
         $("#getResults").html("<a class = 'btn results'>Submit my quiz</a>");
-        $('#welcome').fadeOut(2000).empty();
+        $('#welcome').fadeOut(1200).empty();
         $("#mainHead").animate({
             fontSize: '1em',
             left: '100px',
